@@ -1,8 +1,8 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import TestImg from "./test.webp";
 
 function DataFetchingComponent() {
-  const [dataList, setDataList] = useState([]);
+  // const [dataList, setDataList] = useState([]);
 
   // 데이터를 가져오는 함수
   // const fetchData = async () => {
@@ -35,7 +35,7 @@ function DataFetchingComponent() {
       </div>
       <div style={{display: 'flex'}}>
         <div style={{textAlign: 'center'}}>
-          <img src={TestImg} />
+          <img src={TestImg} alt="만월회 도면"/>
           <p>만월회 매장 도면 및 구역 설계 이미지 들어갈 예정</p>
         </div>
         <div>
