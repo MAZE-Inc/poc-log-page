@@ -6,7 +6,10 @@ function DataFetchingComponent() {
   // 데이터를 가져오는 함수
   const fetchData = async () => {
     try {
-      const response = await fetch('https://9a8c-183-99-2-118.ngrok-free.app/data'); // 서버 URL을 입력하세요.
+      const response = await fetch('https://9a8c-183-99-2-118.ngrok-free.app/data', {
+        headers: {
+          'ngrok-skip-browser-warning': 'true'
+        }}); // 서버 URL을 입력하세요.
       const data = await response.json();
       setDataList(prevDataList => [...prevDataList, data]);
     } catch (error) {
