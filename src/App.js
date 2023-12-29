@@ -25,6 +25,7 @@ function DataFetchingComponent() {
   return (
     <div style={{padding: 20}}>
       <h1>2024년 12월 29일 매장 내 실시간 현황</h1>
+      <h2>만월회</h2>
       {dataList.map((item, index) => (
         <div key={index} style={{ marginBottom: '20px', padding: '10px' }}>
           <p><strong>시각:</strong> {item.timestamp}</p>
