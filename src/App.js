@@ -1,5 +1,5 @@
 import React from 'react';
-import TestImg from "./test.webp";
+import manwol from './manwol.png';
 
 function DataFetchingComponent() {
   // const [dataList, setDataList] = useState([]);
@@ -30,17 +30,16 @@ function DataFetchingComponent() {
 
     <div style={{width:'100%'}}>
       <div style={{textAlign:'center'}}>
-        <h1>2024년 12월 29일 매장 내 실시간 현황</h1>
+        <h1>2024년 1월 3일 매장 내 실시간 현황</h1>
         <h2>만월회</h2>
       </div>
       <div style={{display: 'flex'}}>
-        <div style={{textAlign: 'center'}}>
-          <img src={TestImg} alt="만월회 도면"/>
-          <p>만월회 매장 도면 및 구역 설계 이미지 들어갈 예정</p>
+        <div style={{textAlign: 'center', width: '50%'}}>
+          <img src={manwol} alt="만월회 도면" style={{width: "100%"}}/>
         </div>
         <div>
           <div> 
-            <p><strong>✅ 2024년 12월 29일 오후 5시 35분 17초 기준 매장 내 고객 현황</strong></p>
+            <p><strong>✅ [2024년 1월 3일 오후 5시 35분 17초] 기준 매장 내 고객 현황</strong></p>
             <ul> 
               <li>매장 내 고객 수 : 총 3명 (남 1 / 여 2) </li>
               <li> 3번 고객 (남)
@@ -65,14 +64,14 @@ function DataFetchingComponent() {
           </div>
 
         <div>
-          <p><strong>🚨 2024년 12월 29일 오후 5시 35분 20초 이벤트 발생</strong></p>
+          <p><strong>🚨 [2024년 1월 3일 오후 5시 35분 20초] 이벤트 발생</strong></p>
           <ul>
             <li>3번 고객이 매장을 나감</li> 
           </ul>
         </div>
 
         <div>
-          <p><strong>✅ 2024년 12월 29일 오후 5시 35분 22초 기준 매장 내 고객 현황</strong></p>
+          <p><strong>✅ [2024년 1월 3일 오후 5시 35분 22초] 기준 매장 내 고객 현황</strong></p>
           <ul> 
             <li>매장 내 고객 수 : 총 2명 (남 0 / 여 2) </li>
             <li> 5번 고객 (여)
@@ -95,7 +94,7 @@ function DataFetchingComponent() {
     </div>
 
     // <div style={{padding: 20}}>
-    //   <h1>2024년 12월 29일 매장 내 실시간 현황</h1>
+    //   <h1>2024년 1월 3일 매장 내 실시간 현황</h1>
     //   <h2>만월회</h2>
     //   {dataList.map((item, index) => (
     //     <div key={index} style={{ marginBottom: '20px', padding: '10px' }}>
