@@ -1,5 +1,6 @@
 import React from 'react';
-import manwol from './manwol.png';
+import test from './test.png';
+
 
 function DataFetchingComponent() {
   // const [dataList, setDataList] = useState([]);
@@ -29,68 +30,7 @@ function DataFetchingComponent() {
   return (
 
     <div style={{width:'100%'}}>
-      <div style={{textAlign:'center'}}>
-        <h1>2024년 1월 3일 매장 내 실시간 현황</h1>
-        <h2>만월회</h2>
-      </div>
-      <div style={{display: 'flex'}}>
-        <div style={{textAlign: 'center', width: '50%'}}>
-          <img src={manwol} alt="만월회 도면" style={{width: "100%"}}/>
-        </div>
-        <div>
-          <div> 
-            <p><strong>✅ [2024년 1월 3일 오후 5시 35분 17초] 기준 매장 내 고객 현황</strong></p>
-            <ul> 
-              <li>매장 내 고객 수 : 총 3명 (남 1 / 여 2) </li>
-              <li> 3번 고객 (남)
-                <ul>
-                  <li>냉장고 구역에 위치</li>
-                  <li>방문한지 15분 24초 지남</li>
-                </ul>
-              </li>
-              <li> 5번 고객 (여)
-                <ul>
-                  <li>로비에 위치</li>
-                  <li>방문한지 3분 12초 지남</li>
-                </ul>
-              </li>
-              <li> 6번 고객 (여)
-                <ul>
-                  <li>로비에 위치</li>
-                  <li>방문한지 3분 15초 지남</li>
-                </ul>
-              </li>
-            </ul>
-          </div>
-
-        <div>
-          <p><strong>🚨 [2024년 1월 3일 오후 5시 35분 20초] 이벤트 발생</strong></p>
-          <ul>
-            <li>3번 고객이 매장을 나감</li> 
-          </ul>
-        </div>
-
-        <div>
-          <p><strong>✅ [2024년 1월 3일 오후 5시 35분 22초] 기준 매장 내 고객 현황</strong></p>
-          <ul> 
-            <li>매장 내 고객 수 : 총 2명 (남 0 / 여 2) </li>
-            <li> 5번 고객 (여)
-              <ul>
-                <li>로비에 위치</li>
-                <li>방문한지 3분 17초 지남</li>
-              </ul>
-            </li>
-            <li> 6번 고객 (여)
-              <ul>
-                <li>로비에 위치</li>
-                <li>방문한지 3분 20초 지남</li>
-              </ul>
-            </li>
-          </ul>
-        </div>
-
-        </div>
-      </div>
+      <img src={test} alt='test' width={'100%'}/>
     </div>
 
     // <div style={{padding: 20}}>
