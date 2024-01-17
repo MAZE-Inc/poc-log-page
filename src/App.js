@@ -1,58 +1,29 @@
-import React from 'react';
-import test from './test.png';
+import React from "react";
+import test from "./test.png";
+import { Blueprint } from "./component/Blueprint";
+import { Dashboard } from "./component/Dashboard";
+import { EventLog } from "./component/EventLog";
 
+function App() {
+  const today = new Date();
+  const week = ["일", "월", "화", "수", "목", "금", "토"];
 
-function DataFetchingComponent() {
-  // const [dataList, setDataList] = useState([]);
-
-  // 데이터를 가져오는 함수
-  // const fetchData = async () => {
-  //   try {
-  //     const response = await fetch('https://9a8c-183-99-2-118.ngrok-free.app/data', {
-  //       headers: {
-  //         'ngrok-skip-browser-warning': 'true'
-  //       }}); // 서버 URL을 입력하세요.
-  //     const data = await response.json();
-  //     setDataList(prevDataList => [...prevDataList, data]);
-  //   } catch (error) {
-  //     console.error('데이터를 불러오는데 실패했습니다:', error);
-  //   }
-  // };
-
-  // // 마운트될 때와 5초마다 fetchData 함수를 호출
-  // useEffect(() => {
-  //   fetchData();
-  //   const interval = setInterval(fetchData, 5000);
-  //   return () => clearInterval(interval); // 컴포넌트 언마운트 시 인터벌 제거
-  // }, []);
-
-  // 화면에 데이터 리스트를 나열
   return (
-
-    <div style={{width:'100%'}}>
-      <img src={test} alt='test' width={'100%'}/>
+    <div style={{ marginLeft: "10%" }}>
+      <div style={{ margin: "5%", textAlign: "center" }}>
+        <h1>
+          {today.getFullYear()}년 {today.getMonth() + 1}월 {today.getDate()}일{" "}
+          {week[today.getDay()]}요일 매장 내 실시간 현황
+        </h1>
+        <h2>만월회</h2>
+      </div>
+      <div style={{ display: "flex", height: "50vh" }}>
+        <Blueprint />
+        <Dashboard />
+        <EventLog />
+      </div>
     </div>
-
-    // <div style={{padding: 20}}>
-    //   <h1>2024년 1월 3일 매장 내 실시간 현황</h1>
-    //   <h2>만월회</h2>
-    //   {dataList.map((item, index) => (
-    //     <div key={index} style={{ marginBottom: '20px', padding: '10px' }}>
-    //       <p><strong>시각:</strong> {item.timestamp}</p>
-    //       <p><strong>현재 매장 내 고객 목록:</strong> 'g_1', 'g_2', 'g_3', 'g_4'</p>
-    //       <p><strong>이벤트 발생 목록</strong></p>
-    //       {console.log(item.data.f)}
-    //       <ul>
-    //         <li>{item.type === 1 ? 
-    //                   `${item.data.user_id}가 ${item.data.zone_id}에 관심을 보이고 있습니다.`:
-    //                   `${item.data.user_id}가 ${item.data.from_zone_id}에서 ${item.data.to_zone_id}로 이동했습니다.`}
-    //                   </li>
-    //                   </ul>
-    //       </div>
-    //       ))}
-      
-    // </div>
   );
 }
 
-export default DataFetchingComponent;
+export default App;
