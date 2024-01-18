@@ -84,11 +84,11 @@ export const EventLog = () => {
               msg:
                 data.user_id +
                 "번 회원이 " +
-                (data.data.from_zone_id == "araa_1"
+                (data.data.from_zone_id === "area_1"
                   ? "창가 테이블"
                   : "냉장고") +
                 "에서 " +
-                (data.data.to_zone_id == "araa_1" ? "창가 테이블" : "냉장고") +
+                (data.data.to_zone_id === "area_1" ? "창가 테이블" : "냉장고") +
                 "로 이동했습니다.",
             },
             ...prevMessages,
