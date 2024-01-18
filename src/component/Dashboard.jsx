@@ -8,24 +8,22 @@ export const Dashboard = () => {
   const [total, setTotal] = useState(0);
 
   useEffect(() => {
-    // const wss = new WebSocket("wss://cbb5-183-99-2-118.ngrok-free.app/wss");
-
-    const wss = new WebSocket("ws://localhost:8000/wss");
+    const wss = new WebSocket("ws://0fb7-112-168-255-194.ngrok-free.app/wss");
 
     wss.onmessage = (status) => {
-      console.log(JSON.parse(status.data));
-
-      if (JSON.parse(status.data).domain === "status") {
-        setFemale(JSON.parse(status.data).female);
-        setMale(JSON.parse(status.data).male);
-        setRefrigerator(JSON.parse(status.data).refrigerator);
-        setTable(JSON.parse(status.data).table);
-        setTotal(JSON.parse(status.data).total);
+      const data = JSON.parse(status.data);
+      console.log(data);
+      if (data.type === "status") {
+        setFemale(data.data.female);
+        setMale(data.data.male);
+        setRefrigerator(data.data.refrigerator);
+        setTable(data.data.table);
+        setTotal(data.data.total);
       }
     };
 
     return () => {
-      // wss.close();
+      wss.close();
     };
   }, []);
 
