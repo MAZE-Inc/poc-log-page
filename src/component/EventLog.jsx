@@ -14,7 +14,7 @@ export const EventLog = () => {
       console.log(time);
 
       if (data.type === "event") {
-        if (data.area_type == "in") {
+        if (data.area_type === "in") {
           setMessages((prevMessages) => [
             {
               time:
@@ -45,7 +45,7 @@ export const EventLog = () => {
             },
             ...prevMessages,
           ]);
-        } else if (data.area_type == "out") {
+        } else if (data.area_type === "out") {
           setMessages((prevMessages) => [
             {
               time:
@@ -65,7 +65,7 @@ export const EventLog = () => {
             },
             ...prevMessages,
           ]);
-        } else if (data.area_type == "internal") {
+        } else if (data.area_type === "internal") {
           setMessages((prevMessages) => [
             {
               time:

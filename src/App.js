@@ -1,5 +1,4 @@
 import React from "react";
-import test from "./test.png";
 import { Blueprint } from "./component/Blueprint";
 import { Dashboard } from "./component/Dashboard";
 import { EventLog } from "./component/EventLog";
