@@ -13,7 +13,7 @@ export const Dashboard = () => {
     wss.onmessage = (status) => {
       const data = JSON.parse(status.data);
       console.log(data);
-      if (data.type === "status") {
+      if (data.type === "status" || data.type === "status2") {
         setFemale(data.data.female);
         setMale(data.data.male);
         setRefrigerator(data.data.refrigerator);
