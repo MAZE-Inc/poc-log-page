@@ -8,7 +8,7 @@ export const Dashboard = () => {
   const [total, setTotal] = useState(0);
 
   useEffect(() => {
-    const wss = new WebSocket("ws://0fb7-112-168-255-194.ngrok-free.app/wss");
+    const wss = new WebSocket("wss://0fb7-112-168-255-194.ngrok-free.app/wss");
 
     wss.onmessage = (status) => {
       const data = JSON.parse(status.data);
