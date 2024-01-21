@@ -3,8 +3,14 @@ import React, { useState, useEffect } from "react";
 export const EventLog = () => {
   const [messages, setMessages] = useState([]);
 
+  const formatTimestamp = (time) => {
+    return `${time.getFullYear()}년 ${
+      time.getMonth() + 1
+    }월 ${time.getDate()}일 ${time.getHours()}시 ${time.getMinutes()}분${time.getSeconds()}초`;
+  };
+
   useEffect(() => {
-    const wss = new WebSocket("wss://0fb7-112-168-255-194.ngrok-free.app/wss");
+    const wss = new WebSocket("wss://8b05-183-99-2-118.ngrok-free.app/wss");
 
     // const wss = new WebSocket("ws://localhost:8000/wss");
 
@@ -17,19 +23,7 @@ export const EventLog = () => {
         if (data.area_type === "in") {
           setMessages((prevMessages) => [
             {
-              time:
-                time.getFullYear() +
-                "년 " +
-                (time.getMonth() + 1) +
-                "월 " +
-                time.getDate() +
-                "일 " +
-                time.getHours() +
-                "시 " +
-                time.getMinutes() +
-                "분" +
-                time.getSeconds() +
-                "초",
+              time: formatTimestamp(time),
               msg:
                 (data.first_visit
                   ? "[첫방문] "
@@ -48,19 +42,7 @@ export const EventLog = () => {
         } else if (data.area_type === "out") {
           setMessages((prevMessages) => [
             {
-              time:
-                time.getFullYear() +
-                "년 " +
-                (time.getMonth() + 1) +
-                "월 " +
-                time.getDate() +
-                "일 " +
-                time.getHours() +
-                "시 " +
-                time.getMinutes() +
-                "분" +
-                time.getSeconds() +
-                "초",
+              time: formatTimestamp(time),
               msg: data.user_id + "번 회원이 나갔습니다",
             },
             ...prevMessages,
@@ -68,19 +50,7 @@ export const EventLog = () => {
         } else if (data.area_type === "internal") {
           setMessages((prevMessages) => [
             {
-              time:
-                time.getFullYear() +
-                "년 " +
-                (time.getMonth() + 1) +
-                "월 " +
-                time.getDate() +
-                "일 " +
-                time.getHours() +
-                "시 " +
-                time.getMinutes() +
-                "분" +
-                time.getSeconds() +
-                "초",
+              time: formatTimestamp(time),
               msg:
                 data.user_id +
                 "번 회원이 " +
@@ -96,6 +66,16 @@ export const EventLog = () => {
         }
       }
     };
+
+    // 웹소켓 오류 및 연결 종료 처리
+    wss.onerror = (error) => {
+      console.error("WebSocket Error:", error);
+    };
+
+    wss.onclose = () => {
+      console.log("WebSocket connection closed");
+    };
+
     return () => {
       wss.close();
     };

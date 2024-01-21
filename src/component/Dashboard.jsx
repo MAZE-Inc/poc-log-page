@@ -8,7 +8,7 @@ export const Dashboard = () => {
   const [total, setTotal] = useState(0);
 
   useEffect(() => {
-    const wss = new WebSocket("wss://0fb7-112-168-255-194.ngrok-free.app/wss");
+    const wss = new WebSocket("wss://8b05-183-99-2-118.ngrok-free.app/wss");
 
     wss.onmessage = (status) => {
       const data = JSON.parse(status.data);
@@ -20,6 +20,15 @@ export const Dashboard = () => {
         setTable(data.data.table);
         setTotal(data.data.total);
       }
+    };
+
+    // 웹소켓 오류 및 연결 종료 처리
+    wss.onerror = (error) => {
+      console.error("WebSocket Error:", error);
+    };
+
+    wss.onclose = () => {
+      console.log("WebSocket connection closed");
     };
 
     return () => {
