@@ -10,9 +10,8 @@ export const EventLog = () => {
   };
 
   useEffect(() => {
-    const wss = new WebSocket("wss://8b05-183-99-2-118.ngrok-free.app/wss");
-
     // const wss = new WebSocket("ws://localhost:8000/wss");
+    const wss = new WebSocket("wss://8b2a-183-99-2-118.ngrok-free.app/wss");
 
     wss.onmessage = (event) => {
       const data = JSON.parse(event.data);
