@@ -7,35 +7,35 @@ export const Dashboard = ({ data }) => {
   const [table, setTable] = useState(0);
   const [total, setTotal] = useState(0);
 
-  // useEffect(() => {
-  //   // const wss = new WebSocket("ws://localhost:8000/wss");
-  //   const wss = new WebSocket("wss://8b2a-183-99-2-118.ngrok-free.app/wss");
+  useEffect(() => {
+    // const wss = new WebSocket("ws://localhost:8000/wss");
+    const wss = new WebSocket("wss://8b2a-183-99-2-118.ngrok-free.app/wss");
 
-  //   wss.onmessage = (status) => {
-  //     const data = JSON.parse(status.data);
-  //     console.log(data);
-  //     if (data.type === "status" || data.type === "status2") {
-  //       setFemale(data.data.female);
-  //       setMale(data.data.male);
-  //       setRefrigerator(data.data.refrigerator);
-  //       setTable(data.data.table);
-  //       setTotal(data.data.total);
-  //     }
-  //   };
+    wss.onmessage = (status) => {
+      const data = JSON.parse(status.data);
+      console.log(data);
+      if (data.type === "status" || data.type === "status2") {
+        setFemale(data.data.female);
+        setMale(data.data.male);
+        setRefrigerator(data.data.refrigerator);
+        setTable(data.data.table);
+        setTotal(data.data.total);
+      }
+    };
 
-  //   // 웹소켓 오류 및 연결 종료 처리
-  //   wss.onerror = (error) => {
-  //     console.error("WebSocket Error:", error);
-  //   };
+    // 웹소켓 오류 및 연결 종료 처리
+    // wss.onerror = (error) => {
+    //   console.error("WebSocket Error:", error);
+    // };
 
-  //   wss.onclose = () => {
-  //     console.log("WebSocket connection closed");
-  //   };
+    // wss.onclose = () => {
+    //   console.log("WebSocket connection closed");
+    // };
 
-  //   return () => {
-  //     wss.close();
-  //   };
-  // }, []);
+    return () => {
+      wss.close();
+    };
+  }, []);
 
   return (
     <div style={{ flex: 0.7, textAlign: "center" }}>
