@@ -14,6 +14,10 @@ function App() {
     // const wss = new WebSocket("ws://localhost:8000/wss");
     const wss = new WebSocket("wss://8b2a-183-99-2-118.ngrok-free.app/wss");
 
+    wss.onopen = () => {
+      console.log("열렸당");
+    };
+
     wss.onmessage = (status) => {
       const data = JSON.parse(status.data);
       console.log(data);
@@ -31,10 +35,6 @@ function App() {
 
     wss.onclose = () => {
       console.log("WebSocket connection closed");
-    };
-
-    wss.onopen = () => {
-      console.log("열렸당");
     };
 
     return () => {
