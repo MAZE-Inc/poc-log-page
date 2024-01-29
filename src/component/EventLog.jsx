@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 
-export const EventLog = ({ data }) => {
+export const EventLog = () => {
   const [messages, setMessages] = useState([]);
 
   const formatTimestamp = (time) => {
@@ -10,10 +10,9 @@ export const EventLog = ({ data }) => {
   };
 
   useEffect(() => {
-    // const wss = new WebSocket("ws://localhost:8000/wss");
-    const wss = new WebSocket("wss://8b2a-183-99-2-118.ngrok-free.app/wss");
+    const websocket = new WebSocket("wss://manwol.maze-test-dev.site:8000/wss");
 
-    wss.onmessage = (event) => {
+    websocket.onmessage = (event) => {
       const data = JSON.parse(event.data);
       const time = new Date(data.timestamp);
       console.log(time);
@@ -66,17 +65,21 @@ export const EventLog = ({ data }) => {
       }
     };
 
-    // 웹소켓 오류 및 연결 종료 처리
-    // wss.onerror = (error) => {
-    //   console.error("WebSocket Error:", error);
-    // };
+    websocket.onopen = () => {
+      console.log("opened");
+    };
 
-    // wss.onclose = () => {
-    //   console.log("WebSocket connection closed");
-    // };
+    // 웹소켓 오류 및 연결 종료 처리
+    websocket.onerror = (error) => {
+      console.error("WebSocket Error:", error);
+    };
+
+    websocket.onclose = () => {
+      console.log("WebSocket connection closed");
+    };
 
     return () => {
-      wss.close();
+      websocket.close();
     };
   }, []);
 

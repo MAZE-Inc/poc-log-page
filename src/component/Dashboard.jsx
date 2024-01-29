@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 
-export const Dashboard = ({ data }) => {
+export const Dashboard = () => {
   const [female, setFemale] = useState(0);
   const [male, setMale] = useState(0);
   const [refrigerator, setRefrigerator] = useState(0);
@@ -8,10 +8,9 @@ export const Dashboard = ({ data }) => {
   const [total, setTotal] = useState(0);
 
   useEffect(() => {
-    // const wss = new WebSocket("ws://localhost:8000/wss");
-    const wss = new WebSocket("wss://8b2a-183-99-2-118.ngrok-free.app/wss");
+    const websocket = new WebSocket("wss://manwol.maze-test-dev.site:8000/wss");
 
-    wss.onmessage = (status) => {
+    websocket.onmessage = (status) => {
       const data = JSON.parse(status.data);
       console.log(data);
       if (data.type === "status" || data.type === "status2") {
@@ -23,17 +22,21 @@ export const Dashboard = ({ data }) => {
       }
     };
 
-    // 웹소켓 오류 및 연결 종료 처리
-    // wss.onerror = (error) => {
-    //   console.error("WebSocket Error:", error);
-    // };
+    websocket.onopen = () => {
+      console.log("opened");
+    };
 
-    // wss.onclose = () => {
-    //   console.log("WebSocket connection closed");
-    // };
+    // 웹소켓 오류 및 연결 종료 처리
+    websocket.onerror = (error) => {
+      console.error("WebSocket Error:", error);
+    };
+
+    websocket.onclose = () => {
+      console.log("WebSocket connection closed");
+    };
 
     return () => {
-      wss.close();
+      websocket.close();
     };
   }, []);
 

@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { Blueprint } from "./component/Blueprint";
 import { Dashboard } from "./component/Dashboard";
 import { EventLog } from "./component/EventLog";
@@ -6,41 +6,6 @@ import { EventLog } from "./component/EventLog";
 function App() {
   const today = new Date();
   const week = ["일", "월", "화", "수", "목", "금", "토"];
-
-  const [statusData, setStatusData] = useState(null);
-  const [eventData, setEventData] = useState(null);
-
-  useEffect(() => {
-    // const wss = new WebSocket("ws://localhost:8000/wss");
-    const wss = new WebSocket("wss://8b2a-183-99-2-118.ngrok-free.app/wss");
-
-    wss.onopen = () => {
-      console.log("열렸당");
-    };
-
-    wss.onmessage = (status) => {
-      const data = JSON.parse(status.data);
-      console.log(data);
-      if (data.type === "event") {
-        setEventData(data);
-      } else {
-        setStatusData(data.status);
-      }
-    };
-
-    // 웹소켓 오류 및 연결 종료 처리
-    wss.onerror = (error) => {
-      console.error("WebSocket Error:", error);
-    };
-
-    wss.onclose = () => {
-      console.log("WebSocket connection closed");
-    };
-
-    return () => {
-      wss.close();
-    };
-  }, []);
 
   return (
     <div style={{ marginLeft: "10%" }}>
@@ -53,8 +18,8 @@ function App() {
       </div>
       <div style={{ display: "flex", height: "50vh" }}>
         <Blueprint />
-        <Dashboard data={statusData} />
-        <EventLog data={eventData} />
+        <Dashboard />
+        <EventLog />
       </div>
     </div>
   );
