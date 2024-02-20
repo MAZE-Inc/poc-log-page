@@ -8,7 +8,7 @@ export const Dashboard = () => {
   const [total, setTotal] = useState(0);
 
   useEffect(() => {
-    const websocket = new WebSocket("wss://manwol.maze-test-dev.site:8000/wss");
+    const websocket = new WebSocket("wss://manwol.maze-test-dev.site/wss");
 
     websocket.onmessage = (status) => {
       const data = JSON.parse(status.data);
