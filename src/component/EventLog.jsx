@@ -10,7 +10,7 @@ export const EventLog = () => {
   };
 
   useEffect(() => {
-    const websocket = new WebSocket("wss://manwol.maze-test-dev.site:8000/wss");
+    const websocket = new WebSocket("wss://manwol.maze-test-dev.site/wss");
 
     websocket.onmessage = (event) => {
       const data = JSON.parse(event.data);
